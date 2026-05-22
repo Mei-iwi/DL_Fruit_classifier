@@ -1,0 +1,6 @@
+﻿class_name,raw_images,train_images,val_images,test_images,test_from_source_dataset
+Banana,490,392,98,166,True
+Mango,490,392,98,157,True
+Pineapple,490,392,98,166,True
+Strawberry,492,393,99,164,True
+Watermelon,475,380,95,157,True
