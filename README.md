@@ -140,3 +140,7 @@ Project tập trung vào các nhóm chức năng chính:
 | Không đẩy dữ liệu lớn nếu không cần | Dữ liệu thật và model lớn có thể được loại khỏi GitHub bằng `.gitignore`. |
 | Giữ thư mục rỗng bằng `.gitkeep` | Các thư mục chưa có dữ liệu vẫn được lưu trong GitHub nhờ file `.gitkeep`. |
 | Báo cáo lấy từ output thật | Hình ảnh và bảng kết quả trong báo cáo phải lấy từ thư mục `reports/`. |
+### Data. Thứ tự chạy
+python src/preprocess_images.py
+python src/split_image_data.py
+python src/check_processed_dataset.py
