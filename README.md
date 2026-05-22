@@ -1,5 +1,13 @@
 # README - Đồ án 1: Phân loại trái cây qua ảnh
 
+## Kích hoạt môi trường trên vs code với git bash 
+
+```
+py -m venv .venv
+source .venv/Scripts/activate
+pip install -r requirements.txt
+```
+
 ## 1. Tổng quan source code
 
 Project `fruit_classifier` là source code cho đồ án phân loại trái cây qua ảnh bằng mô hình CNN.  
