@@ -43,9 +43,6 @@ SUPPORTED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp"}
 MIN_IMAGES_PER_CLASS = 20
 
 # Đường dẫn điểm lưu models
-MODEL_DIR =  PROJECT_ROOT / "models"
-
-MODEL_PATH = PROJECT_ROOT / "fruit_cnn.keras"
 
 from pathlib import Path
 

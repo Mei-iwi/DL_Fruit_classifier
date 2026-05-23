@@ -8,6 +8,15 @@ source .venv/Scripts/activate
 pip install -r requirements.txt
 ```
 
+``` command
+python app_fruit_cli.py self_test
+python app_fruit_cli.py data
+python app_fruit_cli.py train
+python app_fruit_cli.py evaluate
+python app_fruit_cli.py predict --image_path data/test_images/test.jpg
+python app_fruit_cli.py all
+```
+
 ## 1. Tổng quan source code
 
 Project `fruit_classifier` là source code cho đồ án phân loại trái cây qua ảnh bằng mô hình CNN.  
