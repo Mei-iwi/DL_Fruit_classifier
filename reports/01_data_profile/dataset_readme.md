@@ -10,7 +10,7 @@ Mỗi thư mục con tương ứng với một lớp trái cây.
 
 ## 2. Số lớp và số ảnh
 
-- Số lớp: 6
+- Số lớp: 5
 - Tổng số ảnh trong data/raw: 2437
 - Số ảnh lỗi phát hiện: 0
 
@@ -22,7 +22,6 @@ class_name  num_images
  Pineapple         490
 Strawberry         492
 Watermelon         475
-       raw           0
 
 ## 4. Kiểm tra ảnh lỗi
 
