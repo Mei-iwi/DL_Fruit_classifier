@@ -22,6 +22,7 @@ from src.config import (
     HISTORY_PATH,
     MODEL_SUMMARY_PATH
 )
+
 from src.model_cnn import build_cnn_model
 
 
