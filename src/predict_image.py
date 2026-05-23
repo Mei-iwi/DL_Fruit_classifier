@@ -8,7 +8,7 @@ import os
 ROOT_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT_DIR))
 
-# Import từ config của bạn
+# Import từ config
 from src.config import MODEL_PATH, IMG_SIZE, TEST_DIR
 
 def predict_single_image(image_path):
@@ -29,7 +29,7 @@ def predict_single_image(image_path):
 
     # Dự đoán
     predictions = model.predict(img_array)
-    score = tf.nn.softmax(predictions[0]) # Áp dụng softmax
+    score = predictions[0]
     predicted_class = class_names[np.argmax(score)]
     confidence = 100 * np.max(score)
 
