@@ -4,7 +4,7 @@ import argparse
 from main import (
     run_all_pipeline,
     run_data_pipeline,
-    run_evalute_pipeline,
+    run_evaluate_pipeline,
     run_predict_pipeline, 
     run_self_test,
     run_train_pipeline
@@ -86,7 +86,7 @@ def main_test_fruit_cli():
         run_train_pipeline()
     
     elif args.command == "evaluate":
-        run_evalute_pipeline()
+        run_evaluate_pipeline()
     
     elif args.command == "predict":
         run_predict_pipeline(args.image_path)
