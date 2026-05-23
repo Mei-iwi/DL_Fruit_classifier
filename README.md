@@ -7,7 +7,7 @@ py -m venv .venv
 source .venv/Scripts/activate
 pip install -r requirements.txt
 ```
-
+## Chạy cli
 ``` command
 python app_fruit_cli.py self_test
 python app_fruit_cli.py data
@@ -16,6 +16,47 @@ python app_fruit_cli.py evaluate
 python app_fruit_cli.py predict --image_path data/test_images/test.jpg
 python app_fruit_cli.py all
 ```
+## Dataset
+
+1. Kiểm tra dữ liệu ảnh gốc.
+```
+py src/preprocess_images.py
+```
+2. Chia dữ liệu thành train/validation/test.
+```
+py src/split_image_data.py
+```
+3. Kiểm tra dữ liệu sau khi chia.
+```
+py src/check_processed_dataset.py
+```
+
+## Huấn luyện mô hỉnh
+
+```
+src/train_cnn.py
+```
+
+## Thực thi in kết quả
+
+1. Đánh giá và Kiểm thử
+```
+python src/evaluate_cnn.py
+```
+2. Chức năng: Sử dụng model đã train để dự đoán toàn bộ tập test. Xuất ra các báo cáo đánh giá độ chính xác (Classification Report), Ma trận nhầm lẫn (Confusion Matrix) và danh sách các ảnh dự đoán sai (wrong_predictions.csv).
+```
+python src/visualize_results.py
+```
+3. Chức năng: Lấy ngẫu nhiên một lưới ảnh (3x3) trong tập test, đưa vào model dự đoán và xuất ra một tấm hình trực quan so sánh nhãn thực tế với nhãn dự đoán.
+python src/predict_image.py --image "đường_dẫn_tới_ảnh"
+- Chức năng: Test mô hình với một tấm ảnh lẻ bất kỳ. Trả về tên loại trái cây dự đoán kèm theo % độ tin cậy. 
+- Ví dụ: 
+```
+python src/predict_image.py --image "data/processed/test/Banana/36_100.jpg"
+```
+
+
+
 
 ## 1. Tổng quan source code
 

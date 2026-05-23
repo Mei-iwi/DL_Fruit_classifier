@@ -66,15 +66,24 @@ def print_artifact_status(status: dict) -> None:
 
 
 '''
-    Kiến trúc chạy pipeline dữ liệu ảnh
+    Kiến trúc chạy pipeline dữ liệu ảnh -> kiểm tra dữ liệu ảnh
 '''
 
 
 def run_data_pipeline() -> None:
 
     print("\n ---- Thực thi pipeline đánh giá mô hình")
-    print("[INFO] Phần xử lý dữ liệu do thành viên phụ trách dữ liệu hoàn thiện.")
-    print("[INFO] Hiện train_cnn.py đang đọc trực tiếp từ data/raw.")
+    
+    try:
+        from src.preprocess_images import run_data_preprocessing
+
+        run_data_preprocessing()
+
+        print("\n[Ok] Pipeline dữ liệu hoàn tất")
+    
+    except Exception:
+        print("[Error] Không chạy được pipeline dữ liệu ảnh")
+        traceback.print_exc()
     
 
 '''
@@ -99,23 +108,23 @@ def run_train_pipeline() -> None:
     Đánh giá mô hình CNN
 ''' 
 
-def run_evalute_pipeline() -> None:
+def run_evaluate_pipeline() -> None:
 
     print("\n Đánh giá mô hình")
 
     try:
-        from src.evaluate_cnn import main_test_fruit_predict_evaluate
+        from src.evaluate_cnn import evaluate_model
 
-        main_test_fruit_predict_evaluate()
+        evaluate_model()
 
     except Exception:
         print("[Error] Không chạy được elvalute_cnn")
         traceback.print_exc()
 
     try:
-        from src.visualize_results import main_test_visualize_results
+        from src.visualize_results import visualize_samples
 
-        main_test_visualize_results()
+        visualize_samples()
 
     except Exception:
         print("[Error] Không chạy được visualize_result")
@@ -141,9 +150,9 @@ def run_predict_pipeline(image_path: str | None = None) -> None:
         print("Chưa truyền đường dẫn ảnh. Chạy smoke test predict_image")
     
     try:
-        from src.predict_image import main_test_predict_image
+        from src.predict_image import predict_single_image
 
-        main_test_predict_image()
+        predict_single_image(image_path=image_path)
 
     except Exception:
         print("[Error] không chạy được predict_image")
@@ -161,12 +170,23 @@ def run_self_test() -> None:
 
     print_artifact_status(status=status)
 
-    run_data_pipeline()
-    run_train_pipeline()
-    run_evalute_pipeline()
-    run_predict_pipeline()
+    try:
+        from src.preprocess_images import main_test_preprocess_images
+        from src.predict_image import predict_single_image
+        from src.evaluate_cnn import evaluate_model
+        from src.visualize_results import visualize_samples
+        from src.train_cnn import train
 
-    print("\n[OK] SELF TEST hoàn tất")
+        main_test_preprocess_images()
+
+        print("[OK] Import predict_single_image thành công")
+        print("[OK] Import evaluate_model thành công")
+        print("[OK] Import visualize_samples thành công")
+        print("[OK] Import  train thành công")
+
+    except Exception:
+        print("[Error] Selt-test import module bị lỗi")
+        traceback.print_exc()
 
 
 '''
@@ -183,7 +203,7 @@ def run_all_pipeline() -> None:
 
     run_data_pipeline()
     run_train_pipeline()
-    run_evalute_pipeline()
+    run_evaluate_pipeline()
 
     print("\n[Ok] Hoàn tất")
 
