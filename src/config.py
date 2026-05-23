@@ -43,6 +43,40 @@ SUPPORTED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp"}
 MIN_IMAGES_PER_CLASS = 20
 
 # Đường dẫn điểm lưu models
-MODEL_DIR =  PROJECT_ROOT / "models"
 
-MODEL_PATH = PROJECT_ROOT / "fruit_cnn.keras"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# =========================
+# DATA
+# =========================
+DATA_DIR = BASE_DIR / "data"
+RAW_DATA_DIR = DATA_DIR / "raw"
+
+# =========================
+# MODEL
+# =========================
+MODEL_DIR = BASE_DIR / "models"
+MODEL_NAME = "fruit_cnn.keras"
+MODEL_PATH = MODEL_DIR / MODEL_NAME
+
+# =========================
+# REPORT
+# =========================
+REPORT_DIR = BASE_DIR / "reports"
+TRAINING_REPORT_DIR = REPORT_DIR / "02_training"
+HISTORY_PATH = TRAINING_REPORT_DIR / "history.csv"
+MODEL_SUMMARY_PATH = TRAINING_REPORT_DIR / "model_summary.txt"
+
+# =========================
+# TRAINING CONFIG
+# =========================
+IMG_SIZE = (128, 128)
+BATCH_SIZE = 32
+EPOCHS = 20
+LEARNING_RATE = 0.001
+SEED = 42
+
+# Tự chia dữ liệu từ data/raw
+VALIDATION_SPLIT = 0.2

@@ -73,24 +73,9 @@ def print_artifact_status(status: dict) -> None:
 def run_data_pipeline() -> None:
 
     print("\n ---- Thực thi pipeline đánh giá mô hình")
-
-    try:
-        from src.evaluate_cnn import main_test_fruit_predict_evaluate
-
-        main_test_fruit_predict_evaluate()
-    except Exception:
-        print("[Error] không chạy được evalute_cnn")
-        traceback.print_exc()
-
-    try:
-        from src.visualize_results import main_test_visualize_results
-        
-        main_test_visualize_results()
-
-    except Exception:
-        
-        print("[Error] không chạy được visualize_result")
-        traceback.print_exc()
+    print("[INFO] Phần xử lý dữ liệu do thành viên phụ trách dữ liệu hoàn thiện.")
+    print("[INFO] Hiện train_cnn.py đang đọc trực tiếp từ data/raw.")
+    
 
 '''
     Huấn luyện mô hình
@@ -101,18 +86,9 @@ def run_train_pipeline() -> None:
     print("\n Huấn luyện mô hình")
 
     try:
-        from src.model_cnn import main_test_fruit_model_build
+        from src.train_cnn import train
 
-        main_test_fruit_model_build()
-
-    except Exception:
-        print("[Error] không chạy được model_cnn")
-        traceback.print_exc()
-
-    try:
-        from src.train_cnn import main_test_train_cnn
-
-        main_test_train_cnn()
+        train()
 
     except Exception:
         print("[Error] Không chạy được train_cnn")
