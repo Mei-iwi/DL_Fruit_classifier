@@ -11,7 +11,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 ROOT_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT_DIR))
 
-# Import đúng các biến từ file config hiện tại của bạn
+# Import đúng các biến từ file config
 from src.config import MODEL_PATH, TEST_DIR, REPORT_DIR, IMG_SIZE, BATCH_SIZE
 
 # Tự động tạo thư mục evaluation ngay trong code
@@ -23,7 +23,6 @@ def evaluate_model():
     model = tf.keras.models.load_model(MODEL_PATH)
 
     print("Đang load tập dữ liệu test...")
-    # Lưu ý: shuffle=False BẮT BUỘC để nhãn thực tế khớp với thứ tự dự đoán
     test_dataset = tf.keras.utils.image_dataset_from_directory(
         TEST_DIR,
         image_size=IMG_SIZE,
