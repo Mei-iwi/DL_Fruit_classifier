@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 ROOT_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT_DIR))
 
-# Import từ config của bạn
+# Import từ config
 from src.config import MODEL_PATH, TEST_DIR, REPORT_DIR, IMG_SIZE, BATCH_SIZE
 
 # Tự tạo thư mục
@@ -30,7 +30,7 @@ def visualize_samples():
     # Lấy 1 batch
     images, labels = next(iter(test_dataset))
     
-    # Dự đoán batch này
+    # Dự đoán batch
     predictions = model.predict(images)
     pred_labels = np.argmax(predictions, axis=1)
 
