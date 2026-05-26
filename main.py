@@ -1,6 +1,7 @@
 from pathlib import Path
 import sys
 import traceback
+import argparse
 
 
 # Lấy đường dẫn tại vị trí file trên máy
@@ -217,4 +218,39 @@ def main_test_fruit_integration() -> None:
 
 
 if __name__ == "__main__":
-    main_test_fruit_integration()
+    parser = argparse.ArgumentParser(description="Chương trình pipeline phân loại trái cây")
+    # Định nghĩa các lệnh con (sub-commands) cho phép người dùng nhập
+    parser.add_argument(
+        "command", 
+        choices=["test", "data", "train", "evaluate", "predict", "all"], 
+        help="Lệnh cần thực thi (VD: predict, train, test...)"
+    )
+    # Định nghĩa tham số truyền đường dẫn ảnh
+    parser.add_argument(
+        "--image_path", 
+        type=str, 
+        help="Đường dẫn ảnh cần dự đoán (chỉ dùng cho lệnh predict)",
+        default=None
+    )
+    args = parser.parse_args()
+    # Điều hướng chạy các hàm tương ứng với lệnh
+    if args.command == "test":
+        main_test_fruit_integration()
+        
+    elif args.command == "data":
+        run_data_pipeline()
+        
+    elif args.command == "train":
+        run_train_pipeline()
+        
+    elif args.command == "evaluate":
+        run_evaluate_pipeline()
+        
+    elif args.command == "predict":
+        if args.image_path is None:
+            print("[Error] Bạn cần cung cấp đường dẫn ảnh. Ví dụ: python main.py predict --image_path data/test_images/anh.jpg")
+        else:
+            run_predict_pipeline(image_path=args.image_path)
+            
+    elif args.command == "all":
+        run_all_pipeline()
