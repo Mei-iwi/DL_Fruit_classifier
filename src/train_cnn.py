@@ -3,6 +3,9 @@ from pathlib import Path
 
 import pandas as pd
 import tensorflow as tf
+import pandas as pd
+import matplotlib.pyplot as plt
+from pathlib import Path
 
 # Cho phép chạy trực tiếp: python src/train_cnn.py
 ROOT_DIR = Path(__file__).resolve().parent.parent
@@ -139,11 +142,46 @@ def train():
 
     save_history(history)
 
+
+    # Chuyển history của Keras thành DataFrame
+    history_df = pd.DataFrame(history.history)
+
+    # Tạo thư mục lưu biểu đồ
+    figure_dir = Path("outputs/figures")
+    figure_dir.mkdir(parents=True, exist_ok=True)
+
+    # 1. Vẽ biểu đồ accuracy
+    plt.figure(figsize=(8, 5))
+    plt.plot(history_df["accuracy"], label="Train accuracy")
+    plt.plot(history_df["val_accuracy"], label="Validation accuracy")
+    plt.title("Training and Validation Accuracy")
+    plt.xlabel("Epoch")
+    plt.ylabel("Accuracy")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(figure_dir / "training_accuracy.png", dpi=300)
+    plt.close()
+
+    # 2. Vẽ biểu đồ loss
+    plt.figure(figsize=(8, 5))
+    plt.plot(history_df["loss"], label="Train loss")
+    plt.plot(history_df["val_loss"], label="Validation loss")
+    plt.title("Training and Validation Loss")
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(figure_dir / "training_loss.png", dpi=300)
+    plt.close()
+
+    print(f"[OK] Đã lưu biểu đồ tại: {figure_dir}")
+
     print("\nTrain xong.")
     print(f"Model đã lưu tại: {MODEL_PATH}")
     print(f"History đã lưu tại: {HISTORY_PATH}")
     print(f"Model summary đã lưu tại: {MODEL_SUMMARY_PATH}")
-
 
 if __name__ == "__main__":
     train()
