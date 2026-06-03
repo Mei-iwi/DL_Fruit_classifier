@@ -1,7 +1,7 @@
 from pathlib import Path
 import shutil
 import pandas as pd
-import cv2
+import cv2 # type: ignore
 import tensorflow as tf
 
 from config import (
@@ -118,7 +118,7 @@ def remove_or_log_bad_images(
         image_files = list_image_files(class_dir)
 
         for image_path in image_files:
-            img = cv2.imread(str(image_path))
+            img = cv2.imread(str(image_path)) #numpy.ndarray
 
             if img is None:
                 bad_rows.append({

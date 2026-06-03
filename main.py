@@ -73,7 +73,7 @@ def print_artifact_status(status: dict) -> None:
 
 def run_data_pipeline() -> None:
 
-    print("\n ---- Thực thi pipeline đánh giá mô hình")
+    print("\n ---- Thực thi pipeline data")
     
     try:
         from src.preprocess_images import run_data_preprocessing

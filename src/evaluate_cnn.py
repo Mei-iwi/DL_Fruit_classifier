@@ -43,7 +43,7 @@ def evaluate_model():
     # 1. Xuất Classification Report
     report = classification_report(y_true, y_pred, target_names=class_names)
     with open(EVAL_REPORT_DIR / "classification_report.txt", "w", encoding="utf-8") as f:
-        f.write(report)
+        f.write(report) # type: ignore
     print("Đã lưu classification_report.txt")
 
     # 2. Vẽ và lưu Confusion Matrix

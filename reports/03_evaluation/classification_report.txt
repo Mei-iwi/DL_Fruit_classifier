@@ -2,8 +2,8 @@
 
       Banana       1.00      0.99      0.99       168
        Mango       1.00      1.00      1.00       166
-   Pineapple       1.00      1.00      1.00       166
-  Strawberry       0.99      1.00      0.99       164
+   Pineapple       0.99      1.00      1.00       166
+  Strawberry       0.99      1.00      1.00       164
   Watermelon       1.00      1.00      1.00       157
 
     accuracy                           1.00       821

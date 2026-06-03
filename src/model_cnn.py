@@ -19,7 +19,8 @@ def build_cnn_model(input_shape, num_classes, learning_rate=0.001):
         layers.Conv2D(64, kernel_size=3, padding="same", activation="relu"),
         layers.MaxPooling2D(),
 
-        layers.Flatten(),
+        # layers.Flatten(),
+        tf.keras.layers.GlobalAveragePooling2D(),
 
         layers.Dense(128, activation="relu"),
         layers.Dropout(0.2),
@@ -32,5 +33,6 @@ def build_cnn_model(input_shape, num_classes, learning_rate=0.001):
         loss="sparse_categorical_crossentropy",
         metrics=["accuracy"]
     )
+    #one hot categorical_crossentropy
 
     return model
